@@ -1,0 +1,29 @@
+﻿<div class="level-list">
+    <header>
+        <p>Nie ma takiej strony.</p>
+        <p id="countdown">Przekierowanie na stronę główną za 3.000 s...</p>
+        <a class="link" href="javascript:void(0);" onclick="window.location.href = '/';">
+            Naciśnij tutaj, jeśli przekierowanie nie nastąpiło automatycznie.
+        </a>
+    </header>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let countdownElement = document.getElementById("countdown");
+        let timeRemaining = 3000;
+
+        function updateCountdown() {
+            if (timeRemaining <= 0) {
+                window.location.href = '/';
+            } else {
+                countdownElement.textContent = `Przekierowanie za ${(timeRemaining / 1000).toFixed(3)} s...`;
+                timeRemaining -= 17;
+                setTimeout(updateCountdown, 17);
+            }
+        }
+
+        updateCountdown();
+    });
+</script>

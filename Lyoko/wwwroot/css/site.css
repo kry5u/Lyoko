@@ -1,0 +1,225 @@
+@font-face {
+    font-family: Sys2;
+    src: url('../fonts/Sys2_regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Sys2;
+    src: url('../fonts/Sys2_light.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    font-family: Sys2, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    position: relative;
+    min-height: 100%;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    color: #f5f5f5; /* Tekst domyœlny */
+    background-color: #3e4555; /* T³o g³ównej czêœci */
+}
+
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("../Images/Levels.png");
+    background-position: 50% center;
+    background-repeat: repeat;
+    background-size: 2788px 1963px;
+    opacity: 0.15;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.layout {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    min-width: 256px;
+    max-width: 256px;
+    background-color: #202836; /* T³o menu bocznego */
+    color: #f5f5f5; /* Tekst menu bocznego */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+.sidebar-header {
+    padding: 16px;
+}
+
+    .sidebar-header ul {
+        list-style: none;
+    }
+
+        .sidebar-header ul li {
+            margin: 16px 0;
+        }
+
+            .sidebar-header ul li a {
+                display: block;
+            }
+
+                .sidebar-header ul li a:hover {
+                    text-decoration-line: underline;
+                }
+
+.site {
+    width: 100%;
+}
+
+.header {
+    padding: 32px 64px 16px;
+}
+
+.main {
+    padding: 0 64px 32px;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    background-color: #202836; /* T³o stopki */
+    color: #f5f5f5; /* Tekst stopki */
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 256px);
+    padding: 8px;
+}
+
+.table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.level-list {
+    width: 100%;
+    display: flex;
+}
+
+.level-item {
+    list-style-type: none;
+}
+
+.highlighted {
+    list-style-type: "> ";
+    color: #e92947; /* Znacznik wyboru poziomu */
+}
+
+    .highlighted a {
+        color: #e92947; /* Tekst wyboru poziomu po najechaniu */
+    }
+
+table {
+    width: 100%;
+    color: #f5f5f5; /* Tekst tabeli */
+    height: fit-content;
+    text-align: left;
+    table-layout: fixed;
+}
+
+
+tbody tr {
+    cursor: pointer;
+}
+
+tr:hover td {
+    color: #e92947; /* Podœwietlenie tabeli */
+}
+
+
+th:first-child, td:first-child {
+    color: transparent;
+}
+
+tr:hover td:first-child {
+    color: #e92947; /* Podœwietlenie znacznika */
+}
+
+table th:nth-child(1) {
+    width: 5%;
+}
+
+table th:nth-child(2) {
+    width: 100px;
+}
+
+table th:nth-child(3) {
+    width: 30%;
+}
+
+table th:nth-child(4) {
+    width: max-content
+}
+
+
+input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 2px solid #e92947;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #e92947; /* Tekst przycisku */
+}
+
+.link:hover {
+    color: #e92947; /* Tekst przycisku po najechaniu */
+}
+
+.fifty {
+    display: flex;
+    width: 30%;
+}
+
+.settings {
+    list-style-type: none;
+}
+
+    .settings:hover {
+        list-style-type: "> ";
+        color: #e92947;
+    }
+
+.text-danger {
+    color: #e92947;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }

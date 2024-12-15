@@ -1,0 +1,25 @@
+﻿@model RedirectViewModel
+
+<div>
+    <p>@Model.Message</p>
+    <p id="countdown">Przekierowanie za 2.000 s...</p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let countdownElement = document.getElementById("countdown");
+        let timeRemaining = 2000;
+
+        function updateCountdown() {
+            if (timeRemaining <= 0) {
+                window.location.href = '@Model.ReturnUrl';
+            } else {
+                countdownElement.textContent = `Przekierowanie za ${(timeRemaining / 1000).toFixed(3)} s...`;
+                timeRemaining -= 17;
+                setTimeout(updateCountdown, 17);
+            }
+        }
+
+        updateCountdown();
+    });
+</script>

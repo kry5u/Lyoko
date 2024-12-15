@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <nav>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index"><img style='height: 100%; width: 100%; object-fit: contain' src="~/images/lyoko.png" alt="Lyoko" /></a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <p>Enlightened:</p>
+                            <p>@User.Identity.Name</p>                         
+                        }
+                        <li><a asp-controller="Home" asp-action="About"><i class="ph ph-game-controller"></i> O grze</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-controller="Level" asp-action="Index"><i class="ph ph-compass-rose"></i> Przeglądaj poziomy</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+            <div class="sidebar-header">
+                <nav>
+                    <ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><i class="ph ph-gear-six"></i> Ustawienia konta</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Logout"><i class="ph ph-sign-out"></i> Wyloguj się</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-area="Identity" asp-page="/Account/Login"><i class="ph ph-sign-in"></i> Zaloguj się</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Register"><i class="ph ph-user-plus"></i> Zarejestruj się</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div class="site">
+            <main>
+                <div class="bg"></div>
+                <div class="header">
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+                <div class="main">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer>
+                <p>&copy; 2024 Lyoko.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

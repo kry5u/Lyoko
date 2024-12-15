@@ -1,0 +1,21 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Usuń konto";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<div>
+    <div>
+        <p>
+            <strong>Usunięcie danych trwale usunie twoje konto. Ta akcja nie może zostać wycofana.</strong>
+        </p>
+        <p>
+            <a id="delete" class="link" asp-page="DeletePersonalData">Kontynuuj</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

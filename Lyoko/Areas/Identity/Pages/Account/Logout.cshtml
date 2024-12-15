@@ -1,0 +1,46 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Wyloguj się";
+}
+
+<div class="level-list">
+    <div>
+        <p id="countdown">Wylogowanie za 2.000 s...</p>
+        <div>
+            @{
+                if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <a class="link" href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">
+                        Naciśnij tutaj, jeśli wylogowanie nie nastąpiło automatycznie.
+                    </a>
+                    <form id="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" style="display: none;">
+                    </form>
+                }
+                else
+                {
+                    <p>Wylogowano pomyślnie.</p>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let countdownElement = document.getElementById("countdown");
+        let timeRemaining = 2000;
+
+        function updateCountdown() {
+            if (timeRemaining <= 0) {
+                document.getElementById('logout-form').submit();
+            } else {
+                countdownElement.textContent = `Wylogowanie za ${(timeRemaining / 1000).toFixed(3)} s...`;
+                timeRemaining -= 17;
+                setTimeout(updateCountdown, 17);
+            }
+        }
+
+        updateCountdown();
+    });
+</script>

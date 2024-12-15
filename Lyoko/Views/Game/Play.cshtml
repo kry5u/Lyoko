@@ -1,0 +1,16 @@
+﻿@model Lyoko.Models.Level
+
+<div>
+    <p>Zasady: @Model.Data</p>
+
+    <form method="post" action="/Game/SubmitScore">
+        <input type="hidden" name="levelId" value="@Model.Id" />
+        <div>
+            <label for="input">Wprowadź wynik:</label>
+            <input type="number" id="input" name="input" required />
+        </div>
+        <a href="#" class="link" onclick="this.closest('form').submit()">
+            Wyślij wynik
+        </a>
+    </form>
+</div>

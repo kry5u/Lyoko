@@ -1,0 +1,62 @@
+﻿@model IEnumerable<dynamic>
+
+
+<div class="level-list">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li class="level-item">
+                <a asp-controller="Level" asp-action="Play" asp-route-levelId="@item.Level.Id"
+                   class="level-name"
+                   onmouseover="showRanking(@item.Level.Id); highlightLevel(this);">
+                    @item.Level.Name
+                    @if (item.PlayerScore != null)
+                    {
+                        <span>(: @item.PlayerScore)</span>
+                    }
+                    else
+                    {
+                        <span>(: ???)</span>
+                    }
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="table">
+    <p>Możesz odtworzyć powtórkę naciskając na odpowiedni wiersz tabeli!</p>
+    <table>
+        <thead>
+            <tr>
+                <th>></th>
+                <th>Miejsce</th>
+                <th>Wynik</th>
+                <th>Enlightened</th>
+            </tr>       
+        </thead>
+        <tbody id="ranking">
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    async function showRanking(levelId) {
+        const response = await fetch(`/Level/GetRanking/${levelId}`);
+        const html = await response.text();
+        document.getElementById('ranking').innerHTML = html;
+    }
+
+    function highlightLevel(element) {
+        const items = document.querySelectorAll('.level-item');
+        items.forEach(item => item.classList.remove('highlighted'));
+        element.closest('.level-item').classList.add('highlighted');
+    }
+    function redirectToReplay(url) {
+        if (url) {
+            window.location.href = url;
+        }
+    }
+</script>
+
